@@ -1,0 +1,41 @@
+---
+- name: clean controller log
+  shell: |
+    cd "{{ container_log_dir }}/{{ item }}" && rm -rf *.gz && rm -rf *.1
+  with_items: "{{ controller_log_component }}"
+  when:
+    - inventory_hostname in groups['controller']
+
+- name: clean compute log
+  shell: |
+    cd "{{ container_log_dir }}/{{ item }}" && rm -rf *.gz && rm -rf *.1
+  with_items: "{{ compute_log_component }}"
+  when:
+    - inventory_hostname in groups['compute']
+
+- name: clean ironic log
+  shell: |
+    cd "{{ container_log_dir }}/{{ item }}" && rm -rf *.gz && rm -rf *.1
+  with_items: "{{ ironic_log_component }}"
+  when:
+    - inventory_hostname in groups['ironic']
+
+- name: clean ceph log
+  shell: |
+    cd "{{ ceph_log_dir }}" && rm -rf *.gz
+  when:
+    - inventory_hostname in groups['ceph']
+
+- name: clean controller api log
+  shell: |
+    cd "{{ container_log_dir }}/httpd/{{ item }}" && rm -rf *.gz && rm -rf *.1
+  with_items: "{{ controller_api_log_component }}"
+  when:
+    - inventory_hostname in groups['controller']
+
+- name: clean ironic api log
+  shell: |
+    cd "{{ container_log_dir }}/httpd/{{ item }}" && rm -rf *.gz && rm -rf *.1
+  with_items: "{{ ironic_api_log_component }}"
+  when:
+    - inventory_hostname in groups['ironic']

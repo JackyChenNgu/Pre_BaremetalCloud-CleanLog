@@ -1,0 +1,49 @@
+---
+# openstack log options
+container_log_dir: /var/log/containers
+
+# controller log dir
+controller_log_component: 
+  - cinder 
+  - glance
+  - haproxy
+  - heat
+  - horizon
+  - keystone
+  - mysql
+  - neutron
+  - nova
+  - octavia
+  - rabbitmq
+  - redis
+
+# compute log dir
+compute_log_component:
+  - neutron
+  - nova
+
+# ironic log dir
+ironic_log_component:
+  - ironic
+  - ironic-inspector
+
+# ceph log options
+ceph_log_dir: /var/log/ceph
+
+# controller api log
+controller_api_log_component:
+  - cinder-api
+  - heat-api
+  - heat-api-cfn
+  - horizon
+  - keystone
+  - neutron-api
+  - nova-api
+  - nova-metadata
+  - nova-placement
+  - octavia-api
+
+# ironic api log
+ironic_api_log_component:
+  - ironic-api
+  - ironic-pxe

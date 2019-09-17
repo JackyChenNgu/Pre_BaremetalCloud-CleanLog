@@ -1,0 +1,9 @@
+---
+- import_playbook: gather-facts.yml
+
+- name: Apply role clean_log
+  gather_facts: false
+  hosts:
+    - all
+  roles:
+    - role: clean_log 
